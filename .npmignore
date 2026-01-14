@@ -1,0 +1,9 @@
+src/
+node_modules/
+*.log
+.git/
+.github/
+.vscode/
+.idea/
+.editorconfig
+postcss.config.js

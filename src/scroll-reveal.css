@@ -1,0 +1,171 @@
+/**
+ * Scroll Reveal Animations
+ * A CSS-only scroll reveal animation system using scroll-driven animations
+ * @version 1.0.0
+ */
+
+/* ========================================
+   CORE SYSTEM
+   ======================================== */
+
+.scroll-reveal {
+  /* Custom properties - Override these for customization */
+  --reveal-opacity-from: 0;
+  --reveal-opacity-to: 1;
+  --reveal-translate-y: 100px;
+  --reveal-translate-x: 0px;
+  --reveal-scale: 1;
+  --reveal-rotate: 0deg;
+  --reveal-blur: 0px;
+  --reveal-delay: 0ms;
+
+  /* Animation timing */
+  --reveal-range-start: entry 10%;
+  --reveal-range-end: cover 30%;
+  --reveal-easing: cubic-bezier(0, 0.69, 0.57, 0.56);
+
+  /* Performance optimization */
+  will-change: opacity, transform, filter;
+
+  /* Animation */
+  animation: scroll-reveal var(--reveal-easing) forwards;
+  animation-timeline: view();
+  animation-range: var(--reveal-range-start) var(--reveal-range-end);
+  animation-delay: var(--reveal-delay);
+}
+
+@keyframes scroll-reveal {
+  from {
+    opacity: var(--reveal-opacity-from);
+    transform:
+      translateY(var(--reveal-translate-y))
+      translateX(var(--reveal-translate-x))
+      scale(var(--reveal-scale))
+      rotate(var(--reveal-rotate));
+    filter: blur(var(--reveal-blur));
+  }
+  to {
+    opacity: var(--reveal-opacity-to);
+    transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    will-change: auto;
+  }
+}
+
+/* ========================================
+   BROWSER FALLBACK
+   ======================================== */
+
+@supports not (animation-timeline: view()) {
+  .scroll-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ========================================
+   PRESET VARIANTS
+   ======================================== */
+
+.reveal-slow {
+  --reveal-range-end: cover 50%;
+}
+
+.reveal-fast {
+  --reveal-range-end: cover 15%;
+}
+
+.reveal-from-left {
+  --reveal-translate-x: -60px;
+  --reveal-translate-y: 0px;
+}
+
+.reveal-from-right {
+  --reveal-translate-x: 60px;
+  --reveal-translate-y: 0px;
+}
+
+.reveal-from-bottom {
+  --reveal-translate-y: 100px;
+}
+
+.reveal-from-top {
+  --reveal-translate-y: -100px;
+}
+
+.reveal-scale {
+  --reveal-scale: 0.7;
+}
+
+.reveal-scale-up {
+  --reveal-scale: 1.2;
+}
+
+.reveal-blur {
+  --reveal-blur: 10px;
+}
+
+.reveal-rotate {
+  --reveal-rotate: 10deg;
+}
+
+.reveal-rotate-left {
+  --reveal-rotate: -10deg;
+}
+
+/* ========================================
+   STAGGER SYSTEM
+   ======================================== */
+
+.scroll-reveal[data-stagger] {
+  /* Stagger configuration */
+  --stagger-index: 0;
+  --stagger-step: 10%;
+  --stagger-start-base: 0%;
+  --stagger-end-base: 20%;
+
+  /* Dynamic calculation */
+  --reveal-range-start: calc(entry var(--stagger-start-base) + (var(--stagger-index) * var(--stagger-step)));
+  --reveal-range-end: calc(cover var(--stagger-end-base) + (var(--stagger-index) * var(--stagger-step)));
+  --reveal-easing: linear;
+}
+
+/* Stagger speed variants */
+.scroll-reveal[data-stagger="fast"] {
+  --stagger-step: 5%;
+}
+
+.scroll-reveal[data-stagger="slow"] {
+  --stagger-step: 15%;
+}
+
+.scroll-reveal[data-stagger="very-slow"] {
+  --stagger-step: 20%;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.reveal-once {
+  animation-fill-mode: both;
+}
+
+.reveal-repeat {
+  animation-fill-mode: none;
+}

@@ -180,16 +180,54 @@ scrollReveal.setStaggerIndex(element, 5);
 
 Requires browsers that support [CSS Scroll-driven Animations](https://caniuse.com/css-scroll-driven-animations):
 
-- Chrome/Edge 115+
-- Safari 17.5+ (partial)
-- Firefox: Behind flag
+- ✅ Chrome/Edge 115+
+- ⚠️ Safari 17.5+ (partial support)
+- ⚠️ Firefox: Behind flag (experimental)
 
-Graceful fallback for unsupported browsers (elements remain visible).
+**Graceful Degradation**: Unsupported browsers will display all elements without animation.
+
+## Troubleshooting
+
+### Animations not working?
+
+1. Check browser support
+2. Verify CSS is imported
+3. Check if `prefers-reduced-motion` is enabled
+4. Inspect element styles in DevTools
+
+### Stagger not working?
+
+1. Ensure JavaScript is imported and initialized
+2. Check `data-stagger-group` wrapper exists
+3. Verify items have `data-stagger` attribute
+4. Check console for errors with `debug: true`
+
+## Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
 ## License
 
 MIT © Toms
 
-## Contributing
+## Links
 
-Contributions are welcome! Please open an issue or submit a pull request.
+- [GitHub Repository](https://github.com/toms15/scroll-reveal-animations)
+- [NPM Package](https://www.npmjs.com/package/@toms15/scroll-reveal-animations)
+- [Report Issues](https://github.com/toms15/scroll-reveal-animations/issues)
+- [MDN: Scroll-driven Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations)
+
+## Changelog
+
+### 1.0.0
+- Initial release
+- Core scroll reveal system
+- Stagger animations
+- Multiple preset variants
+- WordPress/Sage integration

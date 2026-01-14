@@ -17,15 +17,15 @@ A lightweight, CSS-only scroll reveal animation system using modern scroll-drive
 
 ### NPM
 
-\`\`\`bash
+```bash
 npm install @toms15/scroll-reveal-animations
-\`\`\`
+```
 
 ### Yarn
 
-\`\`\`bash
+```bash
 yarn add @toms15/scroll-reveal-animations
-\`\`\`
+```
 
 ## Usage
 
@@ -33,28 +33,28 @@ yarn add @toms15/scroll-reveal-animations
 
 #### Import CSS
 
-\`\`\`javascript
+```javascript
 // In your main JS file
 import '@toms15/scroll-reveal-animations/dist/scroll-reveal.css';
-\`\`\`
+```
 
 Or in your CSS/SCSS:
 
-\`\`\`css
+```css
 @import '@toms15/scroll-reveal-animations/dist/scroll-reveal.css';
-\`\`\`
+```
 
 #### HTML
 
-\`\`\`html
+```html
 <div class="scroll-reveal">
   <h2>This will fade in on scroll</h2>
 </div>
-\`\`\`
+```
 
 ### Preset Variants
 
-\`\`\`html
+```html
 <!-- Fade from left -->
 <div class="scroll-reveal reveal-from-left">Content</div>
 
@@ -69,11 +69,11 @@ Or in your CSS/SCSS:
 
 <!-- Slow animation -->
 <div class="scroll-reveal reveal-slow">Content</div>
-\`\`\`
+```
 
 ### Custom Properties
 
-\`\`\`html
+```html
 <div class="scroll-reveal" style="
   --reveal-translate-y: 50px;
   --reveal-scale: 0.9;
@@ -81,51 +81,51 @@ Or in your CSS/SCSS:
 ">
   Custom animation
 </div>
-\`\`\`
+```
 
 ### Stagger Animations
 
 #### With JavaScript (Recommended)
 
-\`\`\`javascript
+```javascript
 import ScrollReveal from '@toms15/scroll-reveal-animations';
 
 // Auto-initialize
 new ScrollReveal();
-\`\`\`
+```
 
-\`\`\`html
+```html
 <div data-stagger-group>
   <div class="scroll-reveal" data-stagger>Item 1</div>
   <div class="scroll-reveal" data-stagger>Item 2</div>
   <div class="scroll-reveal" data-stagger>Item 3</div>
 </div>
-\`\`\`
+```
 
 #### Without JavaScript
 
-\`\`\`html
+```html
 <div class="scroll-reveal" data-stagger style="--stagger-index: 0">Item 1</div>
 <div class="scroll-reveal" data-stagger style="--stagger-index: 1">Item 2</div>
 <div class="scroll-reveal" data-stagger style="--stagger-index: 2">Item 3</div>
-\`\`\`
+```
 
 ### WordPress/Sage Integration
 
 **resources/scripts/app.js:**
 
-\`\`\`javascript
+```javascript
 import ScrollReveal from '@toms15/scroll-reveal-animations';
 import '@toms15/scroll-reveal-animations/dist/scroll-reveal.css';
 
 domReady(() => {
   new ScrollReveal({ debug: true });
 });
-\`\`\`
+```
 
 **In your Blade template:**
 
-\`\`\`html
+```html
 <div data-stagger-group>
   @foreach($items as $item)
     <div class="scroll-reveal" data-stagger>
@@ -133,13 +133,13 @@ domReady(() => {
     </div>
   @endforeach
 </div>
-\`\`\`
+```
 
 ## Customization
 
 ### Available CSS Custom Properties
 
-\`\`\`css
+```css
 .scroll-reveal {
   --reveal-opacity-from: 0;
   --reveal-opacity-to: 1;
@@ -153,11 +153,11 @@ domReady(() => {
   --reveal-range-end: cover 30%;
   --reveal-easing: cubic-bezier(0, 0.69, 0.57, 0.56);
 }
-\`\`\`
+```
 
 ### JavaScript API
 
-\`\`\`javascript
+```javascript
 const scrollReveal = new ScrollReveal({
   staggerGroupSelector: '[data-stagger-group]',
   staggerItemSelector: '[data-stagger]',
@@ -174,7 +174,7 @@ console.log(support);
 
 // Manually set stagger index
 scrollReveal.setStaggerIndex(element, 5);
-\`\`\`
+```
 
 ## Browser Support
 
@@ -193,28 +193,3 @@ MIT © Toms
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
-\`\`\`
-
-## Step 6: LICENSE
-```
-MIT License
-
-Copyright (c) 2024 Toms
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.

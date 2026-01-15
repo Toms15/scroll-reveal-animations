@@ -214,7 +214,7 @@ Contributions are welcome! Please:
 
 ## License
 
-MIT © Toms
+MIT © Toms15
 
 ## Links
 

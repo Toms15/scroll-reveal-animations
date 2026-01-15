@@ -3,6 +3,7 @@ dist/
 *.log
 .DS_Store
 .env
+.npmrc
 coverage/
 .vscode/
 .idea/

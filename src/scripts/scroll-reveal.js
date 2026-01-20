@@ -1,7 +1,7 @@
 /**
  * Scroll Reveal Animations - JavaScript Helper
  * Automatically initializes stagger animations
- * @version 1.0.0
+ * @version 1.0.2
  */
 
 class ScrollReveal {
@@ -63,6 +63,7 @@ class ScrollReveal {
     groups.forEach((group, groupIndex) => {
       const items = group.querySelectorAll(this.options.staggerItemSelector);
       const step = group.dataset.staggerStep || null;
+      const delay = group.dataset.staggerDelay || null; // NUOVO
       const startBase = group.dataset.staggerStartBase || null;
       const endBase = group.dataset.staggerEndBase || null;
 
@@ -72,6 +73,11 @@ class ScrollReveal {
 
       items.forEach((item, index) => {
         item.style.setProperty('--stagger-index', index);
+
+        // NUOVO: Imposta stagger-delay
+        if (delay) {
+          item.style.setProperty('--stagger-delay', `${delay}ms`);
+        }
 
         if (step) {
           item.style.setProperty('--stagger-step', `${step}%`);

@@ -85,7 +85,31 @@ Or in your CSS/SCSS:
 
 ### Stagger Animations
 
-#### With JavaScript (Recommended)
+#### CSS-Only
+
+Perfect for static content. Use numbered classes:
+
+```html
+<div class="scroll-reveal stagger-1">Item 1</div>
+<div class="scroll-reveal stagger-2">Item 2</div>
+<div class="scroll-reveal stagger-3">Item 3</div>
+
+<!-- Fast stagger (5% step) -->
+<div class="scroll-reveal stagger-fast-1">Item 1</div>
+<div class="scroll-reveal stagger-fast-2">Item 2</div>
+
+<!-- Slow stagger (15% step) -->
+<div class="scroll-reveal stagger-slow-1">Item 1</div>
+<div class="scroll-reveal stagger-slow-2">Item 2</div>
+
+<!-- Very slow stagger (20% step) -->
+<div class="scroll-reveal stagger-very-slow-1">Item 1</div>
+<div class="scroll-reveal stagger-very-slow-2">Item 2</div>
+```
+
+Available classes: `.stagger-1` through `.stagger-50` (and all variants)
+
+#### JS-Enhanced (Dynamic - Optional)
 
 ```javascript
 import ScrollReveal from '@toms15/scroll-reveal-animations';
@@ -95,19 +119,11 @@ new ScrollReveal();
 ```
 
 ```html
-<div data-stagger-group>
-  <div class="scroll-reveal" data-stagger>Item 1</div>
-  <div class="scroll-reveal" data-stagger>Item 2</div>
-  <div class="scroll-reveal" data-stagger>Item 3</div>
+<div data-stagger-group data-stagger-step="10">
+    <div class="scroll-reveal" data-stagger>Item 1</div>
+    <div class="scroll-reveal" data-stagger>Item 2</div>
+    <div class="scroll-reveal" data-stagger>Item 3</div>
 </div>
-```
-
-#### Without JavaScript
-
-```html
-<div class="scroll-reveal" data-stagger style="--stagger-index: 0">Item 1</div>
-<div class="scroll-reveal" data-stagger style="--stagger-index: 1">Item 2</div>
-<div class="scroll-reveal" data-stagger style="--stagger-index: 2">Item 3</div>
 ```
 
 ### WordPress/Sage Integration
@@ -225,9 +241,51 @@ MIT © Toms15
 
 ## Changelog
 
+### 1.1.0
+
+#### Added
+- CSS-only stagger classes (`.stagger-1` through `.stagger-50`)
+- Stagger speed variants: `fast`, `slow`, `very-slow`
+- SCSS generation for dynamic class creation
+- Support for both CSS-only and JS-enhanced workflows
+- Enhanced WordPress/Blade integration examples
+
+#### Changed
+- Build system switched from PostCSS to SASS
+- Improved documentation with dual-mode stagger examples
+
+#### Fixed
+- Stagger animation timing for horizontal layouts
+- Range-based stagger calculation for elements appearing together
+
+### 1.0.3
+
+#### Fixed
+- Animation delay calculation for stagger groups
+- Data attribute support for custom stagger delays
+
+### 1.0.2
+
+#### Fixed
+- Stagger animation timing improvements
+- Added support for `data-stagger-delay` attribute
+
+### 1.0.1
+
+#### Fixed
+- PostCSS build warnings
+- Package repository URL normalization
+
 ### 1.0.0
+
+#### Added
 - Initial release
-- Core scroll reveal system
-- Stagger animations
-- Multiple preset variants
+- Core scroll reveal system with CSS scroll-driven animations
+- Multiple preset variants (from-left, from-right, scale, blur, etc.)
+- Stagger animations with JS-enhanced support
 - WordPress/Sage integration
+- Accessibility support (respects `prefers-reduced-motion`)
+- Performance optimizations with `will-change`
+- Comprehensive documentation
+
+Made with ❤️ by [Toms15](https://github.com/toms15)

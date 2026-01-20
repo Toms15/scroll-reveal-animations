@@ -12,12 +12,12 @@
     "LICENSE"
   ],
   "scripts": {
-    "build:css": "postcss src/styles/scroll-reveal.css -o dist/scroll-reveal.css",
-    "build:css:min": "postcss src/styles/scroll-reveal.css -o dist/scroll-reveal.min.css --env production",
+    "build:css": "sass src/styles/scroll-reveal.scss dist/scroll-reveal.css --style=expanded --no-source-map",
+    "build:css:min": "sass src/styles/scroll-reveal.scss dist/scroll-reveal.min.css --style=compressed --no-source-map",
     "build:js": "cp src/scripts/scroll-reveal.js dist/scroll-reveal.js",
     "build:js:min": "terser src/scripts/scroll-reveal.js -o dist/scroll-reveal.min.js --compress --mangle",
     "build": "npm run build:css && npm run build:css:min && npm run build:js && npm run build:js:min",
-    "watch": "npm run build:css -- --watch",
+    "watch": "sass src/styles/scroll-reveal.scss dist/scroll-reveal.css --watch",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -43,10 +43,7 @@
   },
   "homepage": "https://github.com/toms15/scroll-reveal-animations#readme",
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "cssnano": "^6.0.1",
-    "postcss": "^8.4.31",
-    "postcss-cli": "^11.0.0",
+    "sass": "^1.69.5",
     "terser": "^5.24.0"
   },
   "browserslist": [

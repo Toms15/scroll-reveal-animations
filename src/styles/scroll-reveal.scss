@@ -132,31 +132,49 @@
    STAGGER SYSTEM
    ======================================== */
 
-.scroll-reveal[data-stagger] {
-  /* Stagger configuration */
-  --stagger-index: 0;
-  --stagger-delay-base: 150ms;
-
-  /* Animation delay based on index */
-  animation-delay: calc(var(--stagger-delay-base) * var(--stagger-index));
-
-  /* Standard range for all items */
-  --reveal-range-start: entry 10%;
-  --reveal-range-end: cover 30%;
+/* CSS-ONLY: Manual stagger classes (no JavaScript required) */
+[class*="stagger-"] {
   --reveal-easing: ease-out;
 }
 
-/* Stagger speed variants */
-.scroll-reveal[data-stagger="fast"] {
-  --stagger-delay-base: 100ms;
+/* Generate .stagger-1 to .stagger-50 */
+@for $i from 1 through 50 {
+  .stagger-#{$i} {
+    --reveal-range-start: entry #{($i - 1) * 10%};
+    --reveal-range-end: cover #{20% + (($i - 1) * 10%)};
+  }
 }
 
-.scroll-reveal[data-stagger="slow"] {
-  --stagger-delay-base: 250ms;
+/* Fast variant: .stagger-fast-1 to .stagger-fast-50 */
+@for $i from 1 through 50 {
+  .stagger-fast-#{$i} {
+    --reveal-range-start: entry #{($i - 1) * 5%};
+    --reveal-range-end: cover #{20% + (($i - 1) * 5%)};
+  }
 }
 
-.scroll-reveal[data-stagger="very-slow"] {
-  --stagger-delay-base: 400ms;
+/* Slow variant: .stagger-slow-1 to .stagger-slow-50 */
+@for $i from 1 through 50 {
+  .stagger-slow-#{$i} {
+    --reveal-range-start: entry #{($i - 1) * 15%};
+    --reveal-range-end: cover #{20% + (($i - 1) * 15%)};
+  }
+}
+
+/* Very slow variant: .stagger-very-slow-1 to .stagger-very-slow-50 */
+@for $i from 1 through 50 {
+  .stagger-very-slow-#{$i} {
+    --reveal-range-start: entry #{($i - 1) * 20%};
+    --reveal-range-end: cover #{20% + (($i - 1) * 20%)};
+  }
+}
+
+/* JS-ENHANCED: Dynamic stagger with data attributes */
+.scroll-reveal[data-stagger] {
+  /* Default range values - will be overridden by JS */
+  --reveal-range-start: entry 0%;
+  --reveal-range-end: cover 20%;
+  --reveal-easing: ease-out;
 }
 
 /* ========================================

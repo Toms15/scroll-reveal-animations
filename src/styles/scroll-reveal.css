@@ -138,30 +138,43 @@
   --stagger-step: 10%;
   --stagger-start-base: 0%;
   --stagger-end-base: 20%;
+  --stagger-delay: 150ms;
 
-  /* Dynamic calculation */
-  --reveal-range-start: calc(entry var(--stagger-start-base) + (var(--stagger-index) * var(--stagger-step)));
-  --reveal-range-end: calc(cover var(--stagger-end-base) + (var(--stagger-index) * var(--stagger-step)));
-  --reveal-easing: linear;
+  /* Dynamic calculation - sottrai per elementi side-by-side */
+  --reveal-range-start: calc(entry var(--stagger-start-base) - (var(--stagger-index) * var(--stagger-step)));
+  --reveal-range-end: calc(cover var(--stagger-end-base) - (var(--stagger-index) * var(--stagger-step)));
+  --reveal-easing: ease-out;
+
+  /* Animation delay per elementi che entrano insieme */
+  animation-delay: calc(var(--reveal-delay, 0ms) + (var(--stagger-delay) * var(--stagger-index)));
 }
 
 /* Stagger speed variants */
 .scroll-reveal[data-stagger="fast"] {
+  --stagger-delay: 100ms;
   --stagger-step: 5%;
 }
 
 .scroll-reveal[data-stagger="slow"] {
+  --stagger-delay: 250ms;
   --stagger-step: 15%;
 }
 
 .scroll-reveal[data-stagger="very-slow"] {
+  --stagger-delay: 400ms;
   --stagger-step: 20%;
+}
+
+/* Per elementi verticali (uno sotto l'altro) */
+.scroll-reveal[data-stagger="vertical"] {
+  --stagger-delay: 0ms; /* No delay, solo range */
+  --reveal-range-start: calc(entry var(--stagger-start-base) + (var(--stagger-index) * var(--stagger-step)));
+  --reveal-range-end: calc(cover var(--stagger-end-base) + (var(--stagger-index) * var(--stagger-step)));
 }
 
 /* ========================================
    UTILITY CLASSES
    ======================================== */
-
 .reveal-once {
   animation-fill-mode: both;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@toms15/scroll-reveal-animations",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A lightweight, CSS-only scroll reveal animation system using modern scroll-driven animations API",
   "main": "dist/scroll-reveal.js",
   "module": "dist/scroll-reveal.js",
